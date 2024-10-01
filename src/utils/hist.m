@@ -1,5 +1,5 @@
-%image = imread('../images/peppers512warna.bmp');
-image = imread('../images/peppers.bmp');
+%image = imread('../../images/peppers512warna.bmp');
+image = imread('../../images/peppers.bmp');
 imshow(image);
 histogram(image);
 
