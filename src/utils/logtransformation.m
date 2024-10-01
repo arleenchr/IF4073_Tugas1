@@ -1,21 +1,17 @@
 image = imread('images/peppers512warna.bmp');
-%imshow(image);
-negative_image = negative(image);
-invers_negative = negative(negative_image);
-imshow(negative_image);
-histogram(negative_image);
-%imshow(invers_negative);
-histogram(invers_negative);
+imshow(image);
+log_image = logtransform(image,10,1);
+imshow(log_image);
+histogram(log_image);
 
-function output_image = negative(image)
+function output_image = logtransform(image,c,r)
     [rows, cols, color_channels] = size(image);
     output_image = zeros(rows, cols, 'uint8');
 
     for i = 1:rows
         for j = 1:rows
             for k = 1:color_channels
-                temp = 255 - image(i,j,k);
-
+                temp = c*log(double(image(i,j,k) + r));
                 % Clipping
                 if temp < 0
                     output_image(i,j,k) = 0;
@@ -28,6 +24,3 @@ function output_image = negative(image)
         end
     end
 end
-
-
-    
