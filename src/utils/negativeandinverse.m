@@ -1,7 +1,10 @@
-image = imread('images/peppers512warna.bmp');
-%imshow(image);
+image = imread('../../images/peppers512warna.bmp');
+imshow(image);
+histogram(image);
+
 negative_image = negative(image);
 invers_negative = negative(negative_image);
+
 imshow(negative_image);
 histogram(negative_image);
 %imshow(invers_negative);
