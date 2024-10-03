@@ -1,9 +1,9 @@
-I = imread('../../images/peppers512warna.bmp'); %read the image
+I = imread('../../images/peppers512warna.bmp');
 I_new = stretch(I);
-figure,imshow(I); % display original image
-figure,histogram(I); % display histogram of original image
-figure,imshow(I_new); % display transformed image
-figure,histogram(I_new); 
+figure,imshow(I); title("Citra Asli");
+figure,histogram(I); title("Histogram Citra Asli");
+figure,imshow(I_new); title("Citra Hasil");
+figure,histogram(I_new); title("Histogram Citra Hasil");
 
 function output_image = stretch(image)
     [rows, cols, color_channels] = size(image);

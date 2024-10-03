@@ -1,14 +1,14 @@
 image = imread('../../images/peppers512warna.bmp');
-imshow(image);
-histogram(image);
+figure,imshow(image); title("Citra Asli");
+figure,histogram(image); title("Histogram Citra Asli");
 
 negative_image = negative(image);
 invers_negative = negative(negative_image);
 
-imshow(negative_image);
-histogram(negative_image);
-%imshow(invers_negative);
-histogram(invers_negative);
+figure,imshow(negative_image); title("Citra Negative");
+figure,histogram(negative_image); title("Histogram Citra Negative");
+figure,imshow(invers_negative); title("Citra Invers Negative");
+figure,histogram(invers_negative); title("Histogram Citra Invers Negative");
 
 function output_image = negative(image)
     [rows, cols, color_channels] = size(image);

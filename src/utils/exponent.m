@@ -1,10 +1,10 @@
 image = imread('../../images/peppers512warna.bmp');
-imshow(image);
-histogram(image);
+figure,imshow(image); title("Citra Asli");
+figure,histogram(image); title("Histogram Citra Asli");
 
 exp_image = exptransform(image,1,100);
-imshow(exp_image);
-histogram(exp_image);
+figure,imshow(exp_image); title("Citra Hasil Exponent");
+figure,histogram(exp_image); title("Histogram Citra Hasil Exponent");
 
 function output_image = exptransform(image,c,r)
     [rows, cols, color_channels] = size(image);

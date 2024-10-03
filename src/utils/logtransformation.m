@@ -1,10 +1,10 @@
 image = imread('../../images/peppers512warna.bmp');
-imshow(image);
-histogram(image);
+figure,imshow(image); title("Citra Asli");
+figure,histogram(image); title("Histogram Citra Asli");
 
 log_image = logtransform(image,10,1);
-imshow(log_image);
-histogram(log_image);
+figure,imshow(log_image); title("Citra Log Transformed");
+figure,histogram(log_image); title("Histogram Log Transformed");
 
 function output_image = logtransform(image,c,r)
     [rows, cols, color_channels] = size(image);
