@@ -1,5 +1,5 @@
-I2 = imread('images/girl.bmp'); % Gambar referensi (target)
-I = imread('images/goldhill.bmp'); % Gambar input
+I2 = imread('../../images/baboon24.bmp'); % Gambar referensi (target)
+I = imread('../../images/peppers512warna.bmp'); % Gambar input
 
 % Memeriksa citra grayscale atau berwarna
 if size(I, 3) == 3 && size(I2, 3) == 3
@@ -38,20 +38,12 @@ figure,histogram(I2); title("Histogram Gambar Acuan");
 figure,imshow(I_new); title("Gambar Hasil");
 figure,histogram(I_new); title("Histogram Gambar Hasil");
 
-function hist_eq = histogramEq(image)
-    hist_frequency = compute_histogram(image);
-    
-    cdf = cumsum(hist_frequency) / numel(image); 
-  
-    hist_eq = uint8(floor(cdf * 255));
-end
-
 function output_image = matching(image1, image2)
     [row, col] = size(image1);
     output_image = zeros(row, col);
 
-    hist1 = histogramEq(image1); % Gambar input
-    hist2 = histogramEq(image2); % Gambar acuan
+    hist1 = compute_equalization(image1); % Gambar input
+    hist2 = compute_equalization(image2); % Gambar acuan
 
  
     invHist = zeros(256,1);
