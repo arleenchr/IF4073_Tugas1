@@ -1,4 +1,4 @@
-image = imread('../../images/peppers512warna.bmp');
+image = imread('images/peppers512warna.bmp');
 imshow(image);
 brightened_image = image_brightening(image, 1.5, 50);
 imshow(brightened_image);
