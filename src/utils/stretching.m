@@ -1,11 +1,11 @@
-I = imread('../../images/peppers512warna.bmp');
-I_new = stretch(I);
-figure,imshow(I); title("Citra Asli");
-figure,histogram(I); title("Histogram Citra Asli");
-figure,imshow(I_new); title("Citra Hasil");
-figure,histogram(I_new); title("Histogram Citra Hasil");
+%I = imread('../../images/peppers512warna.bmp');
+%I_new = stretch(I);
+%figure,imshow(I); title("Citra Asli");
+%figure,histogram(I); title("Histogram Citra Asli");
+%figure,imshow(I_new); title("Citra Hasil");
+%figure,histogram(I_new); title("Histogram Citra Hasil");
 
-function output_image = stretch(image)
+function output_image = stretching(image)
     [rows, cols, color_channels] = size(image);
     output_image = zeros(rows, cols, 'uint8');
 

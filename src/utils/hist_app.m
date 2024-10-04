@@ -1,31 +1,30 @@
-function hist_app(app, image, Axes)
-    % Arahkan ke axes pada GUI
-    axes(Axes);
-    
+function hist_app(app, image, redAxes, greenAxes, blueAxes)
     if size(image, 3) == 1
-        % Gambar grayscale
+        cla(redAxes);
+        cla(greenAxes);
+        cla(blueAxes);
+        % Grayscale image, hanya menggunakan redAxes
         histogram_data = compute_histogram(image);
-        cla(Axes); % Bersihkan axes sebelum plotting
-        plot_histogram_app(histogram_data, 'Grayscale', 'k', Axes);
+        plot_histogram_on_axes(histogram_data, 'Grayscale', redAxes, 'k');
     else
-        % Gambar berwarna
+        cla(redAxes);
+        cla(greenAxes);
+        cla(blueAxes);
+        % Colored image, menggunakan ketiga axes
         r_hist = compute_histogram(image(:, :, 1));
         g_hist = compute_histogram(image(:, :, 2));
         b_hist = compute_histogram(image(:, :, 3));
         
-        % Bersihkan axes sebelum plotting
-        cla(Axes);
-        
-        % Plot histogram RGB dalam satu figure
-        hold(Axes, 'on');
-        plot_histogram_app(r_hist, 'Red', 'r', Axes);
-        plot_histogram_app(g_hist, 'Green', 'g', Axes);
-        plot_histogram_app(b_hist, 'Blue', 'b', Axes);
-        hold(Axes, 'off');
+        % Plot pada axes yang diberikan
+        plot_histogram_on_axes(r_hist, 'Red', redAxes, 'r');
+        plot_histogram_on_axes(g_hist, 'Green', greenAxes, 'g');
+        plot_histogram_on_axes(b_hist, 'Blue', blueAxes, 'b');
     end
 end
 
-function plot_histogram_app(histogram_data, titleText, color, ax)
-    bar(ax, histogram_data, 'FaceColor', color); % Plot pada axes yang diberikan
-    title(ax, titleText); % Judul pada axes yang diberikan
+function plot_histogram_on_axes(histogram_data, color_name, axesHandle, color)
+    bar(axesHandle, histogram_data, 'FaceColor', color);
+    title(axesHandle, [color_name, ' Histogram']);
+    xlabel(axesHandle, 'Intensity');
+    ylabel(axesHandle, 'Frequency');
 end

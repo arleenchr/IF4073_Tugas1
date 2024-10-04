@@ -1,10 +1,10 @@
-image = imread('images/peppers512warna.bmp');
-imshow(image);
-brightened_image = image_brightening(image, 1.5, 50);
-imshow(brightened_image);
+%image = imread('images/peppers512warna.bmp');
+%imshow(image);
+%brightened_image = image_brightening(image, 1.5, 50);
+%imshow(brightened_image);
 
 % Image brightening s = a*r + b
-function output_image = image_brightening(image, a, b)
+function output_image = brightening(image, a, b)
     [rows, cols, color_channels] = size(image);
     output_image = zeros(rows, cols, 'uint8');
 
