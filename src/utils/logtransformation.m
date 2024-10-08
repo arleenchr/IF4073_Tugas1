@@ -11,10 +11,13 @@ function output_image = logtransformation(image,c,r)
     [rows, cols, color_channels] = size(image);
     output_image = zeros(rows, cols, 'uint8');
 
+    % iterasi untuk setiap pixel pada citra
     for i = 1:rows
         for j = 1:cols
             for k = 1:color_channels
+                % menjalankan operasi s = c*log(r+1+a) untuk setiap pixel
                 temp = c*log(double(image(i,j,k) + r +1));
+
                 % Clipping
                 if temp < 0
                     output_image(i,j,k) = 0;

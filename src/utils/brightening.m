@@ -11,7 +11,7 @@ function output_image = brightening(image, a, b)
     for i = 1:rows
         for j = 1:cols
             for k = 1:color_channels
-                temp = double(a * image(i,j,k) + b);
+                temp = double(a * image(i,j,k) + b); % pixel dikalikan dengan a dan ditambah b
 
                 % Clipping
                  if temp < 0
