@@ -5,15 +5,14 @@
 %figure,imshow(I_new); title("Citra Hasil");
 %figure,histogram(I_new); title("Histogram Citra Hasil");
 
+% s = 255*(r - rmin)/(rmax-rmin)
 function output_image = stretching(image)
     [rows, cols, color_channels] = size(image);
     output_image = zeros(rows, cols, 'uint8');
 
     rmin = min(image,[],'all');
-    %rmin = 0;
     disp(rmin);
     rmax = max(image,[],'all');
-    %rmax = 50;
     disp(rmax);
     for i = 1:rows
         for j = 1:cols

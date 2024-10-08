@@ -15,18 +15,10 @@ function output_image = negativeandinverse(image)
     output_image = zeros(rows, cols, 'uint8');
 
     for i = 1:rows
-        for j = 1:rows
+        for j = 1:cols
             for k = 1:color_channels
                 temp = 255 - image(i,j,k);
-
-                % Clipping
-                if temp < 0
-                    output_image(i,j,k) = 0;
-                elseif temp > 255
-                    output_image(i,j,k) = 255;
-                else
-                    output_image(i,j,k) = uint8(temp);
-                end
+                output_image(i,j,k) = uint8(temp);
             end
         end
     end

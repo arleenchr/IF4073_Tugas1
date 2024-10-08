@@ -6,12 +6,13 @@
 %figure,imshow(exp_image); title("Citra Hasil Exponent");
 %figure,histogram(exp_image); title("Histogram Citra Hasil Exponent");
 
+% s = c*s^r
 function output_image = exponent(image,c,r)
     [rows, cols, color_channels] = size(image);
     output_image = zeros(rows, cols, 'uint8');
 
     for i = 1:rows
-        for j = 1:rows
+        for j = 1:cols
             for k = 1:color_channels
                 temp = c*(double(image(i,j,k))^r);
                 % Clipping

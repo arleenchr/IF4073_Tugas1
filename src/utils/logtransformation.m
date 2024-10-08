@@ -6,12 +6,13 @@
 %figure,imshow(log_image); title("Citra Log Transformed");
 %figure,histogram(log_image); title("Histogram Log Transformed");
 
+% s = c*log(r+1+a)
 function output_image = logtransformation(image,c,r)
     [rows, cols, color_channels] = size(image);
     output_image = zeros(rows, cols, 'uint8');
 
     for i = 1:rows
-        for j = 1:rows
+        for j = 1:cols
             for k = 1:color_channels
                 temp = c*log(double(image(i,j,k) + r +1));
                 % Clipping
