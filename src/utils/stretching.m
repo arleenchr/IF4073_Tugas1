@@ -10,13 +10,16 @@ function output_image = stretching(image)
     [rows, cols, color_channels] = size(image);
     output_image = zeros(rows, cols, 'uint8');
 
+    % mencari nilai pixel max dan min dari gambar
     rmin = min(image,[],'all');
-    disp(rmin);
     rmax = max(image,[],'all');
-    disp(rmax);
+    
+    % iterasi untuk setiap pixel
     for i = 1:rows
         for j = 1:cols
             for k = 1:color_channels
+                % menjalankan operasi s = 255*(r - rmin)/(rmax-rmin) untuk
+                % tiap pixel
                 temp = (double(image(i,j,k)) - rmin)*(255/(rmax-rmin));
 
                 % Clipping
